@@ -1,0 +1,51 @@
+.root {
+    -fx-background-color: #000000;
+    -fx-font-family: 'Roboto Mono';
+    -fx-font-size: 12pt;
+}
+
+.label {
+	-fx-text-fill: #FFFFFF;
+}
+
+.button {
+    -fx-background-color: #d3d3d3;
+    -fx-text-fill: #000000;
+    -fx-font-family: 'Roboto Mono';
+    -fx-background-radius: 4;
+}
+
+.choice-box .context-menu {
+	-fx-background-color: #d3d3d3;
+    -fx-text-fill: #000000;
+}
+
+.choice-box .menu-item:focused {
+	-fx-background-color: orange;
+}
+
+.choice-box .menu-item:focused > .label {
+	-fx-text-fill: black;
+}
+
+.check-box {
+	-fx-text-fill: #FFFFFF;
+}
+.choice-box .menu-item > .label {
+	-fx-text-fill: #000000;
+}
+
+.choice-box > .label {
+	-fx-text-fill: #000000;
+}
+
+
+/*
+.button-blue{
+    -fx-background-color: #7cafc2;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 4;
+}
+#bold-label{
+    -fx-font-weight: bold;
+} */

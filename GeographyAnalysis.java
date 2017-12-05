@@ -14,8 +14,8 @@ public class GeographyAnalysis {
     HashMap<String, Integer> cities = new HashMap<String, Integer>();
     List<Entry<String, Integer>> organizedCities;
     
-    HashMap<String, Double> cityWageDifference = new HashMap<String, Double>();
-    List<Entry<String, Double>> organizedCityWageDifference;
+    HashMap<String, Integer> cityWageDifference = new HashMap<String, Integer>();
+    List<Entry<String, Integer>> organizedCityWageDifference;
     
     HashMap<String, Integer> states = new HashMap<String, Integer>();
     List<Entry<String, Integer>> organizedStates;
@@ -44,8 +44,9 @@ public class GeographyAnalysis {
     
     public void cityAnalyzer() {
         System.out.println("Looking at city data...");
+        
         for (int i = 0; i < cases.size(); i++) {            
-            String city = cases.get(i).employerCity;
+            String city = cases.get(i).employerCity.toLowerCase();
                 if (cities.containsKey(city)) {
                     int count = cities.get(city) + 1;
                     cities.put(city, count);
@@ -64,7 +65,7 @@ public class GeographyAnalysis {
         System.out.println("Looking at state data...");
         for (int i = 0; i < cases.size(); i++) {            
             
-            String state = cases.get(i).employerState;
+            String state = cases.get(i).employerState.toLowerCase();
             
             if (states.containsKey(state)) {
                 int count = states.get(state) + 1;
@@ -83,19 +84,19 @@ public class GeographyAnalysis {
     public void cityWageDifferenceAnalyzer() {
         System.out.println("Looking at city data...");
         for (int i = 0; i < cases.size(); i++) {            
-            String city = cases.get(i).employerCity + ", " + cases.get(i).employerState;
+            String city = cases.get(i).employerCity.toLowerCase() + ", " + cases.get(i).employerState;
                 if (cityWageDifference.containsKey(city)) {
-                    double average = (cityWageDifference.get(city) + cases.get(i).wageDifference) / 2;
+                    int average = (cityWageDifference.get(city) + cases.get(i).wageDifference) / 2;
                     cityWageDifference.put(city, average);
                 } else {
                     cityWageDifference.put(city, cases.get(i).wageDifference);
                 }
             }
         
-        Collection<Entry<String, Double>> cityDifSet = cityWageDifference.entrySet();
+        Collection<Entry<String, Integer>> cityDifSet = cityWageDifference.entrySet();
         organizedCityWageDifference =
-                new ArrayList<Entry<String, Double>>(cityDifSet);
-        Collections.sort(organizedCityWageDifference, highToLowDoubleComparator);
+                new ArrayList<Entry<String, Integer>>(cityDifSet);
+        Collections.sort(organizedCityWageDifference, highToLowComparator);
     }
     
 
@@ -144,11 +145,12 @@ public class GeographyAnalysis {
     //top 10 cities with highest dif in prev wage + submitted pay
     public void getTopTenCitiesForWageDif() {
 
-        System.out.println("The top 10 cities and their respective counts are...");
+        System.out.println("The top 10 cities and their respective wage differences are...");
         System.out.println();
         for (int i = 0; i < 10; i++) {
             System.out.println("City: \"" + organizedCityWageDifference.get(i).getKey() +
-                    "\" ––> Count: " + organizedCityWageDifference.get(i).getValue());
+                    "\" ––> Avg Difference Between Wage Offered & Prevailing Wage: " +
+                    organizedCityWageDifference.get(i).getValue());
         }
         System.out.println();
         System.out.println();

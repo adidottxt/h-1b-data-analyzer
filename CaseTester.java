@@ -4,17 +4,12 @@ public class CaseTester {
     
     public static void main(String[] args) throws IOException {
         
+        CaseReader ca = new CaseReader("2016.csv");
         
-        CaseReader ca = new CaseReader("2017.csv");
-        ca.createCases();
-        
-        System.out.println(ca.getNumberOfCases());
-        
-//        CensusDataReader cr = new CensusDataReader("pop-data.xlsx");
-        
+        System.out.println(ca.getNumberOfCases());        
 
-//        GeographyAnalysis ga = new GeographyAnalysis(ca.getCases());
-//        ga.getH1BPopulationPercentageVsStatePopulation("CA");
+        GeographyAnalysis ga = new GeographyAnalysis(ca.getCases());
+        ga.getTopTenCitiesForWageDif();
 
     }
 }

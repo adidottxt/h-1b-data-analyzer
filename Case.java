@@ -24,9 +24,8 @@ public class Case {
     String jobTitle;
     
     double wageRate;
-    int wageRate1;
     double prevailingWage;
-    double wageDifference;
+    int wageDifference;
     
     String thisCase;
     
@@ -41,11 +40,11 @@ public class Case {
               caseSubmitDateYear = Integer.parseInt(caseSubmitDate[2].trim());
             }
             
-            if (row[3] != null) {
+            if (row[3] != null && row[3].length() > 4) {
                 employerName = row[3].toString();
             }
             
-            if (row[6] != null) {
+            if (row[6] != null && row[6].length() > 4) {
                 employerCity = row[6].toString();
             } 
             
@@ -53,7 +52,7 @@ public class Case {
                 employerState = row[7].toString();
             }
             
-            if (row[8] != null) {
+            if (row[8] != null && row[8].length() > 4) {
                 employerPostalCode = row[8].toString();
             }
 
@@ -83,7 +82,7 @@ public class Case {
                 }
             }
  
-            wageDifference = wageRate - prevailingWage;
+            wageDifference = (int) (wageRate - prevailingWage);
                     
         } else if (year == 2009) {
             
@@ -136,7 +135,7 @@ public class Case {
                 }
             }
  
-            wageDifference = wageRate - prevailingWage;
+            wageDifference = (int) (wageRate - prevailingWage);
   
             if (employerCity.equals("CITY") || employerCity.equals("CITY:")) {
                 wageDifference = 0;
@@ -194,7 +193,7 @@ public class Case {
                     }
                 }
      
-                wageDifference = wageRate - prevailingWage;
+                wageDifference = (int) (wageRate - prevailingWage);
       
                 if (employerCity.equals("CITY") || employerCity.equals("CITY:")) {
                     wageDifference = 0;
@@ -256,7 +255,7 @@ public class Case {
                         }
                     }
          
-                    wageDifference = wageRate - prevailingWage;
+                    wageDifference = (int) (wageRate - prevailingWage);
                 }
             
         else if (year == 2015) {
@@ -329,7 +328,7 @@ public class Case {
             }
 
       
-            wageDifference = wageRate - prevailingWage;
+            wageDifference = (int) (wageRate - prevailingWage);
    
         } else if (year == 2016) {
             
@@ -401,7 +400,7 @@ public class Case {
             }
 
       
-            wageDifference = wageRate - prevailingWage;
+            wageDifference = (int) (wageRate - prevailingWage);
 
             
         } else if (year == 2017) {
@@ -474,7 +473,7 @@ public class Case {
             }
 
       
-            wageDifference = wageRate - prevailingWage;
+            wageDifference = (int) (wageRate - prevailingWage);
       
         }
     }

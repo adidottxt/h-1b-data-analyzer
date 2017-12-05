@@ -23,14 +23,7 @@ public class CaseReader {
     public CaseReader(String file) throws IOException {
         
         filename = file;
-        
-//        XSSFWorkbook testBook = new XSSFWorkbook(test);
-//        test.close();
-//        
-//        System.out.println("Loading test sheet...");
-//        testSheet = testBook.getSheetAt(0);
-//        testBook.close();
-//        createCases();
+        createCases();
     }
     
     public void createCases() throws IOException {

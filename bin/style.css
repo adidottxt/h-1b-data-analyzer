@@ -8,11 +8,33 @@
 	-fx-text-fill: #FFFFFF;
 }
 
+#label0.label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 36pt;
+    -fx-font-weight: bold;
+}
+
+#label1b.label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 8pt;
+}
+
+#labelMedium.label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24pt;
+}
+
+#labelSmall.label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 10pt; 
+}
+
 .button {
     -fx-background-color: #d3d3d3;
     -fx-text-fill: #000000;
     -fx-font-family: 'Roboto Mono';
-    -fx-background-radius: 4;
+    -fx-background-radius: 6;
 }
 
 .choice-box .context-menu {
@@ -39,6 +61,10 @@
 	-fx-text-fill: #000000;
 }
 
+.text-area .content {
+	-fx-text-fill: #000000;
+	-fx-background-color: #FFFFFF;
+}
 
 /*
 .button-blue{

@@ -39,11 +39,9 @@ public class CensusDataReader {
         FileInputStream test1 = new FileInputStream(new File(file1));
         
         System.out.println("Reading in census data...");
-        System.out.println("You know this'll take a while.");
         
         XSSFWorkbook testBook1 = new XSSFWorkbook(test1);
 
-        System.out.println("Loading data...");
         testSheet1 = testBook1.getSheetAt(0);
         test1.close();
         testBook1.close();
@@ -94,11 +92,6 @@ public class CensusDataReader {
         averageIncome = averageIncome / count;
     }
     
-    public void testMethod() {
-//        System.out.println(averageIncome);
-        //System.out.println(incomeData.get("AK"));
-    }
-    
     public String convertFullStateToCode(String fullState) {
         if (fullState.equals("alabama")) {
             return "AL";
@@ -126,6 +119,8 @@ public class CensusDataReader {
             return "ID";
         } else if (fullState.equals("illinois")) {
             return "IL";
+        }  else if (fullState.equals("indiana")) {
+            return "IN";
         } else if (fullState.equals("iowa")) {
             return "IA";
         } else if (fullState.equals("kansas")) {
@@ -213,7 +208,6 @@ public class CensusDataReader {
             double percentage = (double) statePopulation * 100 / totalPopulation;
             return percentage;
         } else {
-            System.out.println("Your state wasn't found.");
             return 0;
         }
     }
@@ -226,7 +220,6 @@ public class CensusDataReader {
             double difference = stateIncomeAverage - averageIncome;
             return difference;
         } else {
-            System.out.println("Your state wasn't found.");
             return 0;
         }
     }

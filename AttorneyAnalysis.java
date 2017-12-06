@@ -26,15 +26,13 @@ public class AttorneyAnalysis {
     
     public void runAnalysis() {
 
-        attorneyAnalyzer();
+        attorneyNameAnalyzer();
         attorneyCityAnalyzer();
         attorneyStateAnalyzer();
 
     }
     
-    public void attorneyAnalyzer() {
-        System.out.println("Looking at attorney data...");
-        
+    public void attorneyNameAnalyzer() {        
         for (int i = 0; i < cases.size(); i++) {            
             String attorney = cases.get(i).attorneyName;
             
@@ -55,9 +53,7 @@ public class AttorneyAnalysis {
     }
     
     //fix this
-    public void attorneyCityAnalyzer() {
-        System.out.println("Looking at attorney city data...");
-        
+    public void attorneyCityAnalyzer() {        
         for (int i = 0; i < cases.size(); i++) {
 
             String attorneyCity = cases.get(i).attorneyCity + ", " + cases.get(i).attorneyState;
@@ -75,9 +71,7 @@ public class AttorneyAnalysis {
         Collections.sort(organizedAttorneyCities, highToLowComparator);
     }
     
-    public void attorneyStateAnalyzer() {
-        System.out.println("Looking at attorney state data...");
-        
+    public void attorneyStateAnalyzer() {        
         for (int i = 0; i < cases.size(); i++) {
 
             String attorneyState = cases.get(i).attorneyState;
@@ -104,41 +98,54 @@ public class AttorneyAnalysis {
     };
     
     //top 10 attorneys
-    public void getTopTenBusyAttorneys() {
-        System.out.println("The top 10 attorneys and their respective number of applications in are...");
-        System.out.println();
-        for (int i = 0; i < 10; i++) {
-            System.out.println("Attorney: \"" + organizedAttorneys.get(i).getKey() +
-                    "\" ––> Applications: " + organizedAttorneys.get(i).getValue());
+    public String getTopTenBusyAttorneys() {
+
+        StringBuilder sa = new StringBuilder();
+        sa.append("\n");
+        sa.append("The top 10 attorneys and their respective number of applications are...\n");
+        sa.append("\n");
+        for (int i = 0; i < 10; i++) { 
+            sa.append((i + 1) + ". " + organizedAttorneys.get(i).getKey() + "\n");
+            sa.append("Number of Applications: " + organizedAttorneys.get(i).getValue() + "\n");
+            sa.append("\n");
         }
-        System.out.println();
-        System.out.println();
+        sa.append("\n");
+        return sa.toString();
     }
     
     //most popular attorney city
-    public void getTopTenAttorneyCities() {
-
-        System.out.println("The top 10 attorney cities and their respective number of attorneys are...");
-        System.out.println();
+    public String getTopTenAttorneyCities() {
+        StringBuilder sa = new StringBuilder();
+        sa.append("\n");
+        sa.append("The top 10 attorney cities and their respective number of applications are...\n");
+        sa.append("\n");
         for (int i = 1; i < 11; i++) {
-            System.out.println("City: \"" + organizedAttorneyCities.get(i).getKey() +
-                    "\" ––> Attorney Count: " + organizedAttorneyCities.get(i).getValue());
+            
+            sa.append((i) + ". " + organizedAttorneyCities.get(i).getKey() + "\n");
+            sa.append("Number of Applications: " + organizedAttorneyCities.get(i).getValue() + "\n");
+            sa.append("\n");
+            
         }
-        System.out.println();
-        System.out.println();
+        sa.append("\n");
+        return sa.toString();
     }
     
     //top 10 attorney states
-    public void getTopTenAttorneyStates() {
-
-        System.out.println("The top 10 attorney states and their respective number of attorneys are...");
-        System.out.println();
+    public String getTopTenAttorneyStates() {
+        StringBuilder sa = new StringBuilder();
+        sa.append("\n");
+        sa.append("The top 10 attorney states and their respective number of applications are...");
+        sa.append("\n");
+        sa.append("\n");
         for (int i = 1; i < 11; i++) {
-            System.out.println("State: \"" + organizedAttorneyStates.get(i).getKey() +
-                    "\" ––> Attorney Count: " + organizedAttorneyStates.get(i).getValue());
+
+            sa.append((i) + ". " + organizedAttorneyStates.get(i).getKey() + "\n");
+            sa.append("Number of Applications: " + organizedAttorneyStates.get(i).getValue() + "\n");
+            sa.append("\n");
+            
         }
-        System.out.println();
-        System.out.println();
+        sa.append("\n");
+        return sa.toString();
     }
     
 }

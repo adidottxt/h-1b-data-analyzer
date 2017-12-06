@@ -95,7 +95,6 @@ public class CaseReader {
                 if(nextLine != null || nextLine != headerLine) {
                     if (nextLine[4].equals("H-1B")) {
                         if(Arrays.toString(nextLine).contains("\n")) {
-                            System.out.println("hi");
                         }
                         Case newCase = new Case(nextLine, 2013);
                         cases.add(newCase);

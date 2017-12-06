@@ -28,15 +28,13 @@ public class UniversityAnalysis {
     
     public void uniAppAnalyzer() {
         
-        System.out.println("Looking at university application data...");
         for (int i = 0; i < cases.size(); i++) {            
             
             String test = "UNIVERSITY";
-            String test1 = "UNI";
             
-            String employer = cases.get(i).employerName;
+            String employer = cases.get(i).employerName.toUpperCase();
 
-            if (employer.contains(test) || employer.contains(test1)) {
+            if (employer.contains(test)) {
                 
                 if (uniApplications.containsKey(employer)) {
                     int count = uniApplications.get(employer) + 1;
@@ -55,15 +53,13 @@ public class UniversityAnalysis {
     
     public void uniJobAnalyzer() {
         
-        System.out.println("Looking at university job data...");
         for (int i = 0; i < cases.size(); i++) {            
             
             String test = "UNIVERSITY";
-            String test1 = "UNI";
             
             String employer = cases.get(i).employerName;
 
-            if (employer.contains(test) || employer.contains(test1)) {
+            if (employer.contains(test)) {
                 String job = cases.get(i).jobTitle;
                 if (uniJobs.containsKey(job)) {
                     int count = uniJobs.get(job) + 1;
@@ -89,26 +85,37 @@ public class UniversityAnalysis {
     };
     
     //most apps by university
-    public void getTopTenUniversityApplicants() {
-        System.out.println("The top 10 universities and their number of applications are...");
-        System.out.println();
+    public String getTopTenUniversityApplicants() {
+        
+        StringBuilder sa = new StringBuilder();
+        
+        sa.append("The top 10 universities and their number of applications are...");
+        sa.append("\n");
+        sa.append("\n");
         for (int i = 0; i < 10; i++) {
-            System.out.println("University: \"" + organizedUniApplications.get(i).getKey() +
-                    "\" ––> Count: " + organizedUniApplications.get(i).getValue());
+            sa.append((i + 1) + ". " + organizedUniApplications.get(i).getKey() + "\n");
+            sa.append("Count: " + organizedUniApplications.get(i).getValue() + "\n");
+            sa.append("\n");
         }
-        System.out.println();
-        System.out.println();
+        sa.append("\n");
+        return sa.toString();
     }
     
     //top 10 job titles for uni apps
-    public void getTopTenUniversityJobs() {
-        System.out.println("The top 10 university jobs and their number of applications are...");
-        System.out.println();
+    public String getTopTenUniversityJobs() {
+        
+        StringBuilder sa = new StringBuilder();
+
+        sa.append("The top 10 university jobs and their number of applications are...");
+        sa.append("\n");
+        sa.append("\n");
         for (int i = 0; i < 10; i++) {
-            System.out.println("Job: \"" + organizedUniJobs.get(i).getKey() +
-                    "\" ––> Count: " + organizedUniJobs.get(i).getValue());
+            sa.append((i + 1) + ". " + organizedUniJobs.get(i).getKey() + "\n");
+            sa.append("Count: " + organizedUniJobs.get(i).getValue() + "\n");
+            sa.append("\n");
         }
-        System.out.println();
-        System.out.println();
+        sa.append("\n");
+        
+        return sa.toString();
     }
 }

@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.Map.Entry;
 
 public class GeographyAnalysis {
-
+    
     ArrayList<Case> cases = new ArrayList<Case>();
     
     HashMap<String, Integer> cities = new HashMap<String, Integer>();
@@ -43,10 +45,9 @@ public class GeographyAnalysis {
     }
     
     public void cityAnalyzer() {
-        System.out.println("Looking at city data...");
         
         for (int i = 0; i < cases.size(); i++) {            
-            String city = cases.get(i).employerCity.toLowerCase();
+            String city = cases.get(i).employerCity.toUpperCase() + ", " + cases.get(i).employerState.toUpperCase();
                 if (cities.containsKey(city)) {
                     int count = cities.get(city) + 1;
                     cities.put(city, count);
@@ -62,10 +63,10 @@ public class GeographyAnalysis {
     }
     
     public void stateAnalyzer() {
-        System.out.println("Looking at state data...");
+
         for (int i = 0; i < cases.size(); i++) {            
             
-            String state = cases.get(i).employerState.toLowerCase();
+            String state = cases.get(i).employerState;
             
             if (states.containsKey(state)) {
                 int count = states.get(state) + 1;
@@ -82,9 +83,12 @@ public class GeographyAnalysis {
     }
     
     public void cityWageDifferenceAnalyzer() {
-        System.out.println("Looking at city data...");
+
         for (int i = 0; i < cases.size(); i++) {            
-            String city = cases.get(i).employerCity.toLowerCase() + ", " + cases.get(i).employerState;
+            
+            String city = cases.get(i).employerCity.toUpperCase() + ", " + cases.get(i).employerState;
+            
+            System.out.println(city);
                 if (cityWageDifference.containsKey(city)) {
                     int average = (cityWageDifference.get(city) + cases.get(i).wageDifference) / 2;
                     cityWageDifference.put(city, average);
@@ -99,20 +103,6 @@ public class GeographyAnalysis {
         Collections.sort(organizedCityWageDifference, highToLowComparator);
     }
     
-
-    //top 10 cities
-    public void getTopTenCities() {
-
-        System.out.println("The top 10 cities and their respective counts are...");
-        System.out.println();
-        for (int i = 0; i < 10; i++) {
-            System.out.println("City: \"" + organizedCities.get(i).getKey() +
-                    "\" ––> Count: " + organizedCities.get(i).getValue());
-        }
-        System.out.println();
-        System.out.println();
-    }
-
     Comparator<Entry<String, Integer>> highToLowComparator = new Comparator<Entry<String, Integer>>() {
         public int compare(Entry<String, Integer> entry1, Entry<String, Integer> entry2) {
             Integer count1 = entry1.getValue();
@@ -129,74 +119,117 @@ public class GeographyAnalysis {
         }
     };
     
-    //top 10 states
-    public void getTopTenStates() {
-
-        System.out.println("The top 10 states and their respective counts are...");
-        System.out.println();
+    //top 10 cities
+    public String getTopTenCities() {
+        StringBuilder sa = new StringBuilder();
+        sa.append("\n");
+        sa.append("The top 10 cities and their respective counts are...");
+        sa.append("\n");
+        sa.append("\n");
         for (int i = 0; i < 10; i++) {
-            System.out.println("State: \"" + organizedStates.get(i).getKey() +
-                    "\" ––> Count: " + organizedStates.get(i).getValue());
+            sa.append((i + 1) + ". " + organizedCities.get(i).getKey() + "\n");
+            sa.append("Count: " + organizedCities.get(i).getValue() + "\n");
+            sa.append("\n");
         }
-        System.out.println();
-        System.out.println();
+        
+        return sa.toString();
+    }
+    
+    //top 10 states
+    public String getTopTenStates() { 
+        StringBuilder sa = new StringBuilder();
+        sa.append("\n");
+        sa.append("The top 10 states and their respective counts are...");
+        sa.append("\n");
+        sa.append("\n");
+
+        for (int i = 0; i < 10; i++) {
+            sa.append((i + 1) + ". " + organizedStates.get(i).getKey() + "\n");
+            sa.append("Count: " + organizedStates.get(i).getValue() + "\n");
+            sa.append("\n");
+        }
+        
+        return sa.toString();
     }
     
     //top 10 cities with highest dif in prev wage + submitted pay
-    public void getTopTenCitiesForWageDif() {
-
-        System.out.println("The top 10 cities and their respective wage differences are...");
-        System.out.println();
+    public String getTopTenCitiesForWageDif() {
+        StringBuilder sa = new StringBuilder();
+        sa.append("\n");
+        sa.append("The top 10 cities and their respective average differences"
+                + " between wage offered and prevailing wage are...");
+        sa.append("\n");
+        sa.append("\n");
+        
         for (int i = 0; i < 10; i++) {
-            System.out.println("City: \"" + organizedCityWageDifference.get(i).getKey() +
-                    "\" ––> Avg Difference Between Wage Offered & Prevailing Wage: " +
-                    organizedCityWageDifference.get(i).getValue());
+            sa.append((i + 1) + ". " + organizedCityWageDifference.get(i).getKey() + "\n");
+            sa.append("Average Difference: $" + organizedCityWageDifference.get(i).getValue() + "\n");
+            sa.append("\n");
         }
-        System.out.println();
-        System.out.println();
+        sa.append("\n");
+        return sa.toString();
     }
     
     //average wage of state vs average wage of H1B in state
-    public void getAverageWagevsAverageH1BWage(String state) {
+    public String getAverageWagevsAverageH1BWage(String state) {
         
-        int count = 0;
-        int total = 0;
-        int averageH1BWage = 0;
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.CEILING);
+        
+        StringBuilder sa = new StringBuilder();
+        sa.append("\n");
+        
+        double count = 0;
+        double total = 0;
+        double averageH1BWage = 0;
         
         for (int i = 0; i < cases.size(); i++) {     
             if (cases.get(i).employerState.equals(state)) {
-                total = total + (int) cases.get(i).wageRate;
+                total = total + cases.get(i).wageRate;
                 count++;
             }
         }
-        
         averageH1BWage = total / count;
+        double averageWage = incomeData.get(state);
         
-        int averageWage = incomeData.get(state);
+        sa.append("The average H1B wage for " + state + " is $" + df.format(averageH1BWage) + ".");
+        sa.append("\n");
+        sa.append("The average household income for " + state + " is $" + df.format(averageWage) + ".");
+        sa.append("\n");
+        sa.append("\n");
         
-        System.out.println("The average H1B wage for " + state + " is " + averageH1BWage);
-        System.out.println("The average household income for " + state + " is " + averageWage);
-        
+        return sa.toString();
     }
     
     //% of H-1B apps in state vs % of population in state
-    public void getH1BPopulationPercentageVsStatePopulation(String state) {
+    public String getH1BPopulationPercentageVsStatePopulation(String state) {
+        
+        DecimalFormat df = new DecimalFormat("#.###");
+        df.setRoundingMode(RoundingMode.CEILING);
+        
+        StringBuilder sa = new StringBuilder();
+        sa.append("\n");
+        
         double statePopulationPercentage = ca.getPercentageOfTotalPopulation(state);
         
-        int count = 0;
-        int total = cases.size();
+        double count = 0;
+        double total = cases.size();
         
         for (int i = 0; i < cases.size(); i++) {     
             if (cases.get(i).employerState.equals(state)) {
                 count++;
             }
         }
+
+        double H1BPopulationPercentage = count * 100 / total;
         
-        double H1BPopulationPercentage = (count * 100) / total;
+        sa.append("The percentage of the overall population in " + state + " is " + df.format(statePopulationPercentage) + "%.");
+        sa.append("\n");
+        sa.append("The percentage of H1B applicants from " + state + " is " + df.format(H1BPopulationPercentage) + "%.");
+        sa.append("\n");
+        sa.append("\n");
         
-        System.out.println("The % of the overall population in " + state + " is " + statePopulationPercentage + ".");
-        System.out.println("The % of H1B applicants from " + state + " is " + H1BPopulationPercentage + ".");
-  
+        return sa.toString();
     }
     
 }

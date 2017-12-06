@@ -30,7 +30,6 @@ public class JobAnalysis {
     }
     
     public void jobTitleAnalyzer() {
-        System.out.println("Looking at job title data...");
         for (int i = 0; i < cases.size(); i++) {            
             
             String jobTitle = cases.get(i).jobTitle;
@@ -50,24 +49,23 @@ public class JobAnalysis {
     }
     
     public void cSuiteCityAnalyzer() {
-        System.out.println("Looking at CEO data...");
         for (int i = 0; i < cases.size(); i++) {            
             
-            String job = "chief executive officer";
-            String job1 = "chief technology officer";
-            String job2 = "chief operating officer";
-            String job3 = "chief financial officer";
-            String job4 = "chief marketing officer";
-            String job5 = "chief information officer";
-            String job6 = "chief hospitality officer";
-            String job7 = "chief digital officer";
-            String job8 = "chief creative officer";
-            String job9 = "chief product officer";
-            String job10 = "chief medical officer";
-            String job11 = "chief investment officer";
-            String job12 = "chief experience officer";
+            String job = "CHIEF EXECUTIVE OFFICER";
+            String job1 = "CHIEF TECHNOLOGY OFFICER";
+            String job2 = "CHIEF OPERATING OFFICER";
+            String job3 = "CHIEF FINANCIAL OFFICER";
+            String job4 = "CHIEF MARKETING OFFICER";
+            String job5 = "CHIEF INFORMATION OFFICER";
+            String job6 = "CHIEF HOSPITALITY OFFICER";
+            String job7 = "CHIEF DIGITAL OFFICER";
+            String job8 = "CHIEF CREATIVE OFFICER";
+            String job9 = "CHIEF PRODUCT OFFICER";
+            String job10 = "CHIEF MEDICAL OFFICER";
+            String job11 = "CHIEF INVESTMENT OFFICER";
+            String job12 = "CHIEF EXPERIENCE OFFICER";
             
-            String newJob = cases.get(i).jobTitle.toLowerCase();
+            String newJob = cases.get(i).jobTitle;
 
             if (newJob.contains(job) || newJob.contains(job1) || newJob.contains(job2) 
                     || newJob.contains(job3) || newJob.contains(job4) || newJob.contains(job5)
@@ -75,7 +73,7 @@ public class JobAnalysis {
                      || newJob.contains(job9) || newJob.contains(job10) || newJob.contains(job11)
                      || newJob.contains(job12)) {
                 
-                String city = cases.get(i).worksiteCity + ", " + cases.get(i).worksiteState;
+                String city = cases.get(i).worksiteCity.toUpperCase() + ", " + cases.get(i).worksiteState;
                 
                 if (cSuiteCities.containsKey(city)) {
                     int count = cSuiteCities.get(city) + 1;
@@ -102,11 +100,13 @@ public class JobAnalysis {
     };
     
   //10 most popular titles by city
-    public void getTopTenJobTitles(String city) {
-        System.out.println("Looking at city job data...");
+    public String getTopTenJobTitles(String city) {
+        StringBuilder sa = new StringBuilder();
+        sa.append("\n");
+        sa.append("\n");
         
         for (int i = 0; i < cases.size(); i++) { 
-            String newCity = cases.get(i).employerCity;
+            String newCity = cases.get(i).employerCity.toUpperCase() + ", " + cases.get(i).employerState;
             
             if (city.equalsIgnoreCase(newCity)) {
                 
@@ -126,78 +126,107 @@ public class JobAnalysis {
                 new ArrayList<Entry<String, Integer>>(jobSet);
         Collections.sort(organizedJobCount, highToLowComparator);
         
-        System.out.println("The top 10 jobs and their respective counts in " + city + " are...");
-        System.out.println();
+        sa.append("The top 10 jobs and their respective counts in " + city.toUpperCase() + " are...");
+        sa.append("\n");
+        sa.append("\n");
         for (int i = 0; i < 10; i++) {
-            System.out.println("Job: \"" + organizedJobCount.get(i).getKey() +
-                    "\" ––> Count: " + organizedJobCount.get(i).getValue());
+            sa.append((i + 1) + ". " + organizedJobCount.get(i).getKey() + "\n");
+            sa.append("Count: " + organizedJobCount.get(i).getValue() + "\n");
+            sa.append("\n");
         }
-        System.out.println();
-        System.out.println();
+        sa.append("\n");
+
+        return sa.toString();
     }
     
   //avg dif b/w submitted pay and prev wage by job
-    public void getAverageWageDifferenceByJob(String job) {
-        System.out.println();
-        System.out.println("Looking at wage difference data...");
-        double average = 0.0;
+    public String getAverageWageDifferenceByJob(String job) {
+        StringBuilder sa = new StringBuilder();
+        
+        double averageWageDifference = 0.0;
+        double averagePrevailingWage = 0.0;
+        double averageWage = 0.0;
         
         for (int i = 0; i < cases.size(); i++) { 
             
             String newJob = cases.get(i).jobTitle;
 
             if (job.equalsIgnoreCase(newJob)) {
-                if (average == 0) {
-                    average = cases.get(i).wageDifference;
+                if (averageWageDifference == 0) {
+                    averageWageDifference = cases.get(i).wageDifference;
+                    averageWage = cases.get(i).wageRate;
+                    averagePrevailingWage = cases.get(i).prevailingWage;
                 } else {
-                    average = (average + cases.get(i).wageDifference) / 2;  
+                    averageWageDifference = (averageWageDifference + cases.get(i).wageDifference) / 2; 
+                    averageWage = (averageWage + cases.get(i).wageRate) / 2;
+                    averagePrevailingWage = (averagePrevailingWage + cases.get(i).prevailingWage) / 2;
                 }      
             }   
         }
         
-        int finalAverage = (int) average;
-        System.out.println("The average wage difference for the given job: " + job + ", is $" + finalAverage + ".");
+        int finalWageDifferenceAverage = (int) averageWageDifference;
+        int finalAverageWage = (int) averageWage;
+        int finalAveragePrevWage = (int) averagePrevailingWage;
+        
+        sa.append("The average wage difference for the given job (" + job + ") is $" + finalWageDifferenceAverage + ".\n");
+        sa.append("The average wage for the given job for H1B candidates is $" + finalAverageWage + ".\n");
+        sa.append("The average \"prevailing wage\" based on H1B applications is $" + finalAveragePrevWage + ".");
+        sa.append("\n");
+        sa.append("\n");
+        sa.append("\n");
+        
+        return sa.toString();
     }
     
     //top 10 popular job titles
-    public void getTopTenJobTitles() {
-
-        System.out.println("The top 10 job titles and their numbers are...");
-        System.out.println();
+    public String getTopTenJobTitles() {
+        
+        StringBuilder sa = new StringBuilder();
+        
+        sa.append("The top 10 job titles and their numbers are...");
+        sa.append("\n");
+        sa.append("\n");
+        
         for (int i = 0; i < 10; i++) {
-            System.out.println("Job Title: \"" + organizedJobTitles.get(i).getKey() +
-                    "\" ––> Count: " + organizedJobTitles.get(i).getValue());
+            sa.append((i + 1) + ". " + organizedJobTitles.get(i).getKey() + "\n");
+            sa.append("Count: " + organizedJobTitles.get(i).getValue() + "\n");
+            sa.append("\n");
         }
-        System.out.println();
-        System.out.println();
+        
+        sa.append("\n");
+        return sa.toString();
+        
     }
     
     //top 10 popular cities for ceos
-    public void getTopTenCSuiteCities() {
-        System.out.println("The top 10 cities for C-Suite workers and their numbers are...");
-        System.out.println();
+    public String getTopTenCSuiteCities() {
+        
+        StringBuilder sa = new StringBuilder();
+        
+        sa.append("The top 10 cities for C-Suite workers and their numbers are...");
+        sa.append("\n");
+        sa.append("\n");
+        
         for (int i = 0; i < 10; i++) {
-            System.out.println("City: \"" + organizedCSuiteCities.get(i).getKey() +
-                    "\" ––> Count: " + organizedCSuiteCities.get(i).getValue());
+            sa.append((i + 1) + ". " + organizedCSuiteCities.get(i).getKey() + "\n");
+            sa.append("Count: " + organizedCSuiteCities.get(i).getValue() + "\n");
+            sa.append("\n");
         }
-        System.out.println();
-        System.out.println();
+        sa.append("\n");
+        return sa.toString();
     }
     
     //c-suite avg pay
-    public void getAverageCSuitePay() {
-        getAverageCEOPay();
-        getAverageCFOPay();
-        getAverageCOOPay();
-        getAverageCTOPay();
-        
+    public String getAverageCSuitePay() {
+        String answer = getAverageCEOPay() + getAverageCFOPay() + getAverageCOOPay() + getAverageCTOPay();
+        return answer;
     }
     
     //ceo average pay
-    public void getAverageCEOPay() {
-        System.out.println();
-        System.out.println("Looking at CEO wage data...");
+    public String getAverageCEOPay() {
+        StringBuilder sa = new StringBuilder();
         
+        int count = 0;
         double average = 0.0;
         String job = "chief executive officer";
         String job1 = "ceo";
@@ -209,21 +238,28 @@ public class JobAnalysis {
             if (job.equalsIgnoreCase(newJob) || job1.equalsIgnoreCase(newJob)) {
                 if (average == 0) {
                     average = cases.get(i).wageRate;
+                    count++;
                 } else {
-                    average = (average + cases.get(i).wageRate) / 2;  
+                    average = (average + cases.get(i).wageRate) / 2;
+                    count++;
                 }      
             }   
         } 
         int finalAverage = (int) average;
         
-        System.out.println("The average wage for CEOs is $" + finalAverage + ".");
+        sa.append("The average wage for CEOs is $" + finalAverage + ".\n");
+        sa.append("There were " + count + " CEO H-1B applications in your selected year.");
+        sa.append("\n");
         
+        return sa.toString();
     }
     
-    public void getAverageCFOPay() {
-        System.out.println();
-        System.out.println("Looking at CFO wage data...");
+    public String getAverageCFOPay() {
+
+        StringBuilder sa = new StringBuilder();
+        sa.append("\n");
         
+        int count = 0;
         double average = 0.0;
         String job = "chief financial officer";
         String job1 = "cfo";
@@ -235,21 +271,28 @@ public class JobAnalysis {
             if (job.equalsIgnoreCase(newJob) || job1.equalsIgnoreCase(newJob)) {
                 if (average == 0) {
                     average = cases.get(i).wageRate;
+                    count++;
                 } else {
                     average = (average + cases.get(i).wageRate) / 2;  
+                    count++;
                 }      
             }   
         } 
         int finalAverage = (int) average;
         
-        System.out.println("The average wage for CFOs is $" + finalAverage + ".");
+        sa.append("The average wage for CFOs is $" + finalAverage + ".\n");
+        sa.append("There were " + count + " CFO H-1B applications in your selected year.");
+        sa.append("\n");
         
+        return sa.toString();
     }
     
-    public void getAverageCOOPay() {
-        System.out.println();
-        System.out.println("Looking at COO wage data...");
+    public String getAverageCOOPay() {
         
+        StringBuilder sa = new StringBuilder();
+        sa.append("\n");
+        
+        int count = 0;
         double average = 0.0;
         String job = "chief operating officer";
         String job1 = "coo";
@@ -261,21 +304,29 @@ public class JobAnalysis {
             if (job.equalsIgnoreCase(newJob) || job1.equalsIgnoreCase(newJob)) {
                 if (average == 0) {
                     average = cases.get(i).wageRate;
+                    count++;
                 } else {
                     average = (average + cases.get(i).wageRate) / 2;  
+                    count++;
                 }      
             }   
         } 
         int finalAverage = (int) average;
         
-        System.out.println("The average wage for COOs is $" + finalAverage + ".");
+        sa.append("The average wage for COOs is $" + finalAverage + ".\n");
+        sa.append("There were " + count + " COO H-1B applications in your selected year.");
+        sa.append("\n");
+        
+        return sa.toString();
         
     }
     
-    public void getAverageCTOPay() {
-        System.out.println();
-        System.out.println("Looking at CTO wage data...");
+    public String getAverageCTOPay() {
         
+        StringBuilder sa = new StringBuilder();
+        sa.append("\n");
+        
+        int count = 0;
         double average = 0.0;
         String job = "chief technology officer";
         String job1 = "cto";
@@ -287,14 +338,21 @@ public class JobAnalysis {
             if (job.equalsIgnoreCase(newJob) || job1.equalsIgnoreCase(newJob)) {
                 if (average == 0) {
                     average = cases.get(i).wageRate;
+                    count++;
                 } else {
-                    average = (average + cases.get(i).wageRate) / 2;  
+                    average = (average + cases.get(i).wageRate) / 2; 
+                    count++;
                 }      
             }   
         } 
         int finalAverage = (int) average;
         
-        System.out.println("The average wage for CTOs is $" + finalAverage + ".");
+        sa.append("The average wage for CTOs is $" + finalAverage + ".\n");
+        sa.append("There were " + count + " CTO H-1B applications in your selected year.");
+        sa.append("\n");
+        sa.append("\n");
+        sa.append("\n");
         
+        return sa.toString();
     }
 }

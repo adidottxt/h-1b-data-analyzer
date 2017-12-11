@@ -88,7 +88,6 @@ public class GeographyAnalysis {
             
             String city = cases.get(i).employerCity.toUpperCase() + ", " + cases.get(i).employerState;
             
-            System.out.println(city);
                 if (cityWageDifference.containsKey(city)) {
                     int average = (cityWageDifference.get(city) + cases.get(i).wageDifference) / 2;
                     cityWageDifference.put(city, average);
@@ -122,7 +121,13 @@ public class GeographyAnalysis {
     //top 10 cities
     public String getTopTenCities() {
         StringBuilder sa = new StringBuilder();
+        
         sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
+        sa.append("\n");
+        
         sa.append("The top 10 cities and their respective counts are...");
         sa.append("\n");
         sa.append("\n");
@@ -131,14 +136,19 @@ public class GeographyAnalysis {
             sa.append("Count: " + organizedCities.get(i).getValue() + "\n");
             sa.append("\n");
         }
-        
         return sa.toString();
     }
     
     //top 10 states
     public String getTopTenStates() { 
         StringBuilder sa = new StringBuilder();
+        
         sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
+        sa.append("\n");
+        
         sa.append("The top 10 states and their respective counts are...");
         sa.append("\n");
         sa.append("\n");
@@ -148,14 +158,19 @@ public class GeographyAnalysis {
             sa.append("Count: " + organizedStates.get(i).getValue() + "\n");
             sa.append("\n");
         }
-        
         return sa.toString();
     }
     
     //top 10 cities with highest dif in prev wage + submitted pay
     public String getTopTenCitiesForWageDif() {
         StringBuilder sa = new StringBuilder();
+        
         sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
+        sa.append("\n");
+        
         sa.append("The top 10 cities and their respective average differences"
                 + " between wage offered and prevailing wage are...");
         sa.append("\n");
@@ -166,17 +181,21 @@ public class GeographyAnalysis {
             sa.append("Average Difference: $" + organizedCityWageDifference.get(i).getValue() + "\n");
             sa.append("\n");
         }
-        sa.append("\n");
         return sa.toString();
     }
     
-    //average wage of state vs average wage of H1B in state
+    //average wage of state vs average wage of H-1B in state
     public String getAverageWagevsAverageH1BWage(String state) {
         
         DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.CEILING);
         
         StringBuilder sa = new StringBuilder();
+        
+        sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
         sa.append("\n");
         
         double count = 0;
@@ -192,11 +211,9 @@ public class GeographyAnalysis {
         averageH1BWage = total / count;
         double averageWage = incomeData.get(state);
         
-        sa.append("The average H1B wage for " + state + " is $" + df.format(averageH1BWage) + ".");
+        sa.append("The average H-1B wage for " + state + " is $" + df.format(averageH1BWage) + ".");
         sa.append("\n");
         sa.append("The average household income for " + state + " is $" + df.format(averageWage) + ".");
-        sa.append("\n");
-        sa.append("\n");
         
         return sa.toString();
     }
@@ -208,6 +225,11 @@ public class GeographyAnalysis {
         df.setRoundingMode(RoundingMode.CEILING);
         
         StringBuilder sa = new StringBuilder();
+        
+        sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
         sa.append("\n");
         
         double statePopulationPercentage = ca.getPercentageOfTotalPopulation(state);
@@ -225,10 +247,7 @@ public class GeographyAnalysis {
         
         sa.append("The percentage of the overall population in " + state + " is " + df.format(statePopulationPercentage) + "%.");
         sa.append("\n");
-        sa.append("The percentage of H1B applicants from " + state + " is " + df.format(H1BPopulationPercentage) + "%.");
-        sa.append("\n");
-        sa.append("\n");
-        
+        sa.append("The percentage of H-1B applicants from " + state + " is " + df.format(H1BPopulationPercentage) + "%.");
         return sa.toString();
     }
     

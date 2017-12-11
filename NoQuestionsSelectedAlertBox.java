@@ -13,7 +13,7 @@ public class NoQuestionsSelectedAlertBox {
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
         
-        window.setTitle("H1B Data Analyzer | Pick A Question (pls)");
+        window.setTitle("H-1B Data Analyzer | Pick A Question (pls)");
         window.setMinWidth(650);
 
         Label label = new Label();

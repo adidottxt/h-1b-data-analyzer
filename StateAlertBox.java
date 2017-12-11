@@ -15,7 +15,7 @@ public class StateAlertBox {
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
         
-        window.setTitle("H1B Data Analyzer | Pick Your State");
+        window.setTitle("H-1B Data Analyzer | Pick Your State");
         window.setMinWidth(500);
 
         Label label = new Label();

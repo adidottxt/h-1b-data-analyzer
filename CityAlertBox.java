@@ -15,7 +15,7 @@ public class CityAlertBox {
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
         
-        window.setTitle("H1B Data Analyzer | Pick Your City");
+        window.setTitle("H-1B Data Analyzer | Pick Your City");
         window.setMinWidth(500);
 
         Label label = new Label();

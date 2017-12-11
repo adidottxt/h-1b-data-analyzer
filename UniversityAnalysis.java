@@ -89,7 +89,13 @@ public class UniversityAnalysis {
         
         StringBuilder sa = new StringBuilder();
         
-        sa.append("The top 10 universities and their number of applications are...");
+        sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
+        sa.append("\n");
+        
+        sa.append("The top 10 universities and their number of H-1B applications are...");
         sa.append("\n");
         sa.append("\n");
         for (int i = 0; i < 10; i++) {
@@ -97,7 +103,6 @@ public class UniversityAnalysis {
             sa.append("Count: " + organizedUniApplications.get(i).getValue() + "\n");
             sa.append("\n");
         }
-        sa.append("\n");
         return sa.toString();
     }
     
@@ -105,8 +110,14 @@ public class UniversityAnalysis {
     public String getTopTenUniversityJobs() {
         
         StringBuilder sa = new StringBuilder();
-
-        sa.append("The top 10 university jobs and their number of applications are...");
+        
+        sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
+        sa.append("\n");
+        
+        sa.append("The top 10 university H-1B jobs and their number of applications are...");
         sa.append("\n");
         sa.append("\n");
         for (int i = 0; i < 10; i++) {
@@ -114,7 +125,6 @@ public class UniversityAnalysis {
             sa.append("Count: " + organizedUniJobs.get(i).getValue() + "\n");
             sa.append("\n");
         }
-        sa.append("\n");
         
         return sa.toString();
     }

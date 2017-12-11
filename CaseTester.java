@@ -4,16 +4,13 @@ public class CaseTester {
     
     public static void main(String[] args) throws IOException {
         
-//        CaseReader ca = new CaseReader("2012-test.csv");
+        CaseReader ca = new CaseReader("2015.csv");
 //        CensusDataReader cdr = new CensusDataReader("popdatatest.xlsx");
 //        cdr.getPercentageOfTotalPopulation("IN");
 //        
-   
-//        double a = 1544.0;
-//        double b = 405641.0;
-//        
-//        double answer = (a / b);
-//        System.out.println(df.format(answer));
+        
+        WageBasedSimulation wa = new WageBasedSimulation(ca.getCases());
+        System.out.println(wa.runSimulation());
         
 //        AttorneyAnalysis aa = new AttorneyAnalysis(ca.getCases());
 //        GeographyAnalysis ga = new GeographyAnalysis(ca.getCases());

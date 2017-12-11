@@ -52,7 +52,6 @@ public class AttorneyAnalysis {
         Collections.sort(organizedAttorneys, highToLowComparator);
     }
     
-    //fix this
     public void attorneyCityAnalyzer() {        
         for (int i = 0; i < cases.size(); i++) {
 
@@ -101,7 +100,13 @@ public class AttorneyAnalysis {
     public String getTopTenBusyAttorneys() {
 
         StringBuilder sa = new StringBuilder();
+        
         sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
+        sa.append("\n");
+        
         sa.append("The top 10 attorneys and their respective number of applications are...\n");
         sa.append("\n");
         for (int i = 0; i < 10; i++) { 
@@ -109,14 +114,19 @@ public class AttorneyAnalysis {
             sa.append("Number of Applications: " + organizedAttorneys.get(i).getValue() + "\n");
             sa.append("\n");
         }
-        sa.append("\n");
         return sa.toString();
     }
     
     //most popular attorney city
     public String getTopTenAttorneyCities() {
         StringBuilder sa = new StringBuilder();
+        
         sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
+        sa.append("\n");
+        
         sa.append("The top 10 attorney cities and their respective number of applications are...\n");
         sa.append("\n");
         for (int i = 1; i < 11; i++) {
@@ -126,14 +136,19 @@ public class AttorneyAnalysis {
             sa.append("\n");
             
         }
-        sa.append("\n");
         return sa.toString();
     }
     
     //top 10 attorney states
     public String getTopTenAttorneyStates() {
         StringBuilder sa = new StringBuilder();
+        
         sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
+        sa.append("\n");
+        
         sa.append("The top 10 attorney states and their respective number of applications are...");
         sa.append("\n");
         sa.append("\n");
@@ -144,7 +159,6 @@ public class AttorneyAnalysis {
             sa.append("\n");
             
         }
-        sa.append("\n");
         return sa.toString();
     }
     

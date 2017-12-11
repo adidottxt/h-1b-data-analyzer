@@ -102,6 +102,10 @@ public class JobAnalysis {
   //10 most popular titles by city
     public String getTopTenJobTitles(String city) {
         StringBuilder sa = new StringBuilder();
+        
+        sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
         sa.append("\n");
         sa.append("\n");
         
@@ -134,14 +138,18 @@ public class JobAnalysis {
             sa.append("Count: " + organizedJobCount.get(i).getValue() + "\n");
             sa.append("\n");
         }
-        sa.append("\n");
-
         return sa.toString();
     }
     
   //avg dif b/w submitted pay and prev wage by job
     public String getAverageWageDifferenceByJob(String job) {
         StringBuilder sa = new StringBuilder();
+        
+        sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
+        sa.append("\n");
         
         double averageWageDifference = 0.0;
         double averagePrevailingWage = 0.0;
@@ -169,11 +177,8 @@ public class JobAnalysis {
         int finalAveragePrevWage = (int) averagePrevailingWage;
         
         sa.append("The average wage difference for the given job (" + job + ") is $" + finalWageDifferenceAverage + ".\n");
-        sa.append("The average wage for the given job for H1B candidates is $" + finalAverageWage + ".\n");
-        sa.append("The average \"prevailing wage\" based on H1B applications is $" + finalAveragePrevWage + ".");
-        sa.append("\n");
-        sa.append("\n");
-        sa.append("\n");
+        sa.append("The average wage for the given job for H-1B candidates is $" + finalAverageWage + ".\n");
+        sa.append("The average \"prevailing wage\" based on H-1B applications is $" + finalAveragePrevWage + ".");
         
         return sa.toString();
     }
@@ -182,6 +187,12 @@ public class JobAnalysis {
     public String getTopTenJobTitles() {
         
         StringBuilder sa = new StringBuilder();
+        
+        sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
+        sa.append("\n");
         
         sa.append("The top 10 job titles and their numbers are...");
         sa.append("\n");
@@ -192,16 +203,19 @@ public class JobAnalysis {
             sa.append("Count: " + organizedJobTitles.get(i).getValue() + "\n");
             sa.append("\n");
         }
-        
-        sa.append("\n");
         return sa.toString();
-        
     }
     
     //top 10 popular cities for ceos
     public String getTopTenCSuiteCities() {
         
         StringBuilder sa = new StringBuilder();
+        
+        sa.append("\n");
+        sa.append("\n");
+        sa.append("--------------------------------------------------------------------------");
+        sa.append("\n");
+        sa.append("\n");
         
         sa.append("The top 10 cities for C-Suite workers and their numbers are...");
         sa.append("\n");
@@ -212,13 +226,14 @@ public class JobAnalysis {
             sa.append("Count: " + organizedCSuiteCities.get(i).getValue() + "\n");
             sa.append("\n");
         }
-        sa.append("\n");
         return sa.toString();
     }
     
     //c-suite avg pay
     public String getAverageCSuitePay() {
-        String answer = getAverageCEOPay() + getAverageCFOPay() + getAverageCOOPay() + getAverageCTOPay();
+        
+        String answer = "\n\n" + "--------------------------------------------------------------------------" +
+                "\n\n" + getAverageCEOPay() + getAverageCFOPay() + getAverageCOOPay() + getAverageCTOPay();
         return answer;
     }
     

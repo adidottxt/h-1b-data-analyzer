@@ -15,7 +15,7 @@ public class JobAlertBox {
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
         
-        window.setTitle("H1B Data Analyzer | Pick Your Job");
+        window.setTitle("H-1B Data Analyzer | Pick Your Job");
         window.setMinWidth(750);
 
         Label label = new Label();

@@ -1,7 +1,8 @@
 .root {
     -fx-background-color: #000000;
-    -fx-font-family: 'Roboto Mono';
-    -fx-font-size: 12pt;
+    -fx-font-family: '/CommonSans-Regular.otf';
+    -fx-font-weight: 900;
+    -fx-font-size: 14pt;
 }
 
 .label {
@@ -10,30 +11,37 @@
 
 #label0.label {
     -fx-text-fill: #FFFFFF;
-    -fx-font-size: 36pt;
-    -fx-font-weight: bold;
+    -fx-font-size: 45pt;
+    -fx-font-weight: 900;
 }
 
 #label1b.label {
     -fx-text-fill: #FFFFFF;
-    -fx-font-weight: bold;
+    -fx-font-weight: 400;
     -fx-font-size: 8pt;
+}
+
+#label1a.label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 400;
+    -fx-font-size: 18pt;
 }
 
 #labelMedium.label {
     -fx-text-fill: #FFFFFF;
-    -fx-font-size: 24pt;
+    -fx-font-size: 30pt;
+    -fx-font-weight: 900;
 }
 
 #labelSmall.label {
     -fx-text-fill: #FFFFFF;
-    -fx-font-size: 10pt; 
+    -fx-font-size: 10pt;
+    -fx-font-weight: 500; 
 }
 
 .button {
-    -fx-background-color: #d3d3d3;
     -fx-text-fill: #000000;
-    -fx-font-family: 'Roboto Mono';
+    -fx-font-size: 13pt;
     -fx-background-radius: 6;
 }
 
@@ -61,17 +69,11 @@
 	-fx-text-fill: #000000;
 }
 
+.check-box {
+    -fx-font-size: 10pt;
+}
+
 .text-area .content {
 	-fx-text-fill: #000000;
 	-fx-background-color: #FFFFFF;
 }
-
-/*
-.button-blue{
-    -fx-background-color: #7cafc2;
-    -fx-text-fill: #FFFFFF;
-    -fx-background-radius: 4;
-}
-#bold-label{
-    -fx-font-weight: bold;
-} */

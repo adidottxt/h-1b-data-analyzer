@@ -1,0 +1,79 @@
+.root {
+    -fx-background-color: #000000;
+    -fx-font-family: '/CommonSans-Regular.otf';
+    -fx-font-weight: 900;
+    -fx-font-size: 14pt;
+}
+
+.label {
+	-fx-text-fill: #FFFFFF;
+}
+
+#label0.label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 45pt;
+    -fx-font-weight: 900;
+}
+
+#label1b.label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 400;
+    -fx-font-size: 8pt;
+}
+
+#label1a.label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 400;
+    -fx-font-size: 18pt;
+}
+
+#labelMedium.label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 30pt;
+    -fx-font-weight: 900;
+}
+
+#labelSmall.label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 10pt;
+    -fx-font-weight: 500; 
+}
+
+.button {
+    -fx-text-fill: #000000;
+    -fx-font-size: 13pt;
+    -fx-background-radius: 6;
+}
+
+.choice-box .context-menu {
+	-fx-background-color: #d3d3d3;
+    -fx-text-fill: #000000;
+}
+
+.choice-box .menu-item:focused {
+	-fx-background-color: orange;
+}
+
+.choice-box .menu-item:focused > .label {
+	-fx-text-fill: black;
+}
+
+.check-box {
+	-fx-text-fill: #FFFFFF;
+}
+.choice-box .menu-item > .label {
+	-fx-text-fill: #000000;
+}
+
+.choice-box > .label {
+	-fx-text-fill: #000000;
+}
+
+.check-box {
+    -fx-font-size: 10pt;
+}
+
+.text-area .content {
+	-fx-text-fill: #000000;
+	-fx-background-color: #FFFFFF;
+}

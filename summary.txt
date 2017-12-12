@@ -1,0 +1,15 @@
+[CIT 591] / Fall 2017
+H-1B Data Analyzer / Summary
+Adi Manjunath
+
+H-1B Data Analyzer is a desktop Java application that reads in publicly available H-1B application data (converted into .csv files) from 2008-2017, and analyzes said data to reveal potential insight into the companies, attorneys, universities, cities, states, and employees/jobs (to name a few stakeholders) that are involved in the lottery process that takes place every April. 
+
+Users are allowed to pick a year, and then pick various questions they'd like to answer about their selected year's data set. Users are also allowed to run a simulation of what the visa process would like if all 85,000 visas were handed to the highest bidders (on the basis of wage) as opposed to the luck of the lottery, and how that affects which cities, states, and companies are more (or less) likely to receive H-1B visas.
+
+The H-1B Data Analyzer is accessible at https://github.com/adi-txt/H-1B-Data-Analyzer
+
+First, download the full datasets for 2008-2017 (accessible at: https://drive.google.com/drive/folders/1a2kWDqIMqw68YaFk4bnxS-5jmpaak4Rz?usp=sharing) and replace each file in the test-data folder with the datasets available at the link above. Unfortunately with GitHub's restrictions on a repo's storage size, the test-data folder consists of incomplete data with only 1000 cases per year (as opposed to the 150,000-200,000+ cases that are found in the actual datasets.)
+
+Second, be sure to add all the .jar files found in the lib folder to the libraries in your Java Build Path for whichever SDK you choose to use.
+
+Finally, run the application via the H1BDataAnalyzer.java file.

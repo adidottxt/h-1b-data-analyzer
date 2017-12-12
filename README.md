@@ -11,18 +11,16 @@ You, the user, pick a year, and then pick various questions you’d like to answ
 First, let’s get you set up.
 <br>
 
-----------
-
 
 Setup:
 -------------
 
 #### Step 1
-Download all files found on the H-1B Data Analyzer GitHub page (accessible [here][2].)
+Download all files found on the H-1B Data Analyzer GitHub page (accessible [here][1].)
 
 
 #### Step 2
-Download the full datasets for 2008-2017 (accessible [here][3]) and replace each file in the test-data folder with the datasets available at the link above. Unfortunately with GitHub's restrictions on a repo's storage size, the test-data folder consists of incomplete data with only 1000 cases per year (as opposed to the 150,000-200,000+ cases that are found in the actual datasets.)
+Download the full datasets for 2008-2017 (accessible [here][2]) and replace each file in the test-data folder with the datasets available at the link above. Unfortunately with GitHub's restrictions on a repo's storage size, the test-data folder consists of incomplete data with only 1000 cases per year (as opposed to the 150,000-200,000+ cases that are found in the actual datasets.)
 
 #### Step 3
 Add all the .jar files found in the lib folder to the libraries in your Java Build Path for whichever SDK you choose to use.
@@ -30,8 +28,6 @@ Add all the .jar files found in the lib folder to the libraries in your Java Bui
 #### Step 4
 You’re all set! Run the application via the H1BDataAnalyzer.java file.
 <br>
-
-----------
 
 
 How to use the application:
@@ -59,8 +55,6 @@ Scroll down within the text area to view all your answers.
 
 At this point, you are free to either go back and choose different questions (or go back further to choose a different year), or to exit the program using the “Exit” button. 
 <br>
-
-----------
 
 Questions: Explained!
 -------------------
@@ -153,5 +147,5 @@ This question runs a simulation and then answers multiple questions pertinent to
 <br>
 
 
-  [2]: https://github.com/adi-txt/H-1B-Data-Analyzer
-  [3]: https://drive.google.com/drive/u/3/folders/1a2kWDqIMqw68YaFk4bnxS-5jmpaak4Rz?usp=sharing
+  [1]: https://github.com/adi-txt/H-1B-Data-Analyzer
+  [2]: https://drive.google.com/drive/u/3/folders/1a2kWDqIMqw68YaFk4bnxS-5jmpaak4Rz?usp=sharing

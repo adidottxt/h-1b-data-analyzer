@@ -169,4 +169,7 @@ public class CaseReader {
         return cases;
     } 
     
+    public int getNumberOfCases() {
+        return cases.size();
+    }
 }

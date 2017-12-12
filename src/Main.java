@@ -2,7 +2,6 @@
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-
 import java.io.PrintStream;
 import javafx.application.Application;
 import javafx.geometry.HPos;
@@ -11,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextAreaBuilder;
 import javafx.scene.control.Tooltip;
@@ -272,13 +270,17 @@ public class Main extends Application {
 
         CheckBox question16 = new CheckBox("Run H-1B Allocation Simulation");
         question16.setTooltip(new Tooltip("This simulation gives you the answer to various questions \n"
-                + "pertinent to what would happen if the yearly quota of 85,000 visas \n was not "
-                + "allocated via lottery, but instead to the 85,000 highest bidders.")); 
+                + "pertinent to what would happen if the yearly quota of \n85,000 visas was not "
+                + "allocated via lottery, but instead to the 85,000 \nhighest bidders. This analyzes "
+                + "information about the 85,000 \nthat get their visas, and information about the "
+                + "remaining who do not.")); 
         
         CheckBox question16Copy = new CheckBox("Run H-1B Allocation Simulation");
         question16Copy.setTooltip(new Tooltip("This simulation gives you the answer to various questions \n"
-                + "pertinent to what would happen if the yearly quota of 85,000 visas \n was not "
-                + "allocated via lottery, but instead to the 85,000 highest bidders.")); 
+                + "pertinent to what would happen if the yearly quota of \n85,000 visas was not "
+                + "allocated via lottery, but instead to the 85,000 \nhighest bidders. This analyzes "
+                + "information about the 85,000 \nthat get their visas, and information about the "
+                + "remaining who do not.")); 
         
         //Button 0
         Button button0 = new Button("Exit");
@@ -766,6 +768,7 @@ public class Main extends Application {
         if (question16.isSelected()) {
             WageBasedSimulation wa = new WageBasedSimulation(cases);
             sb.append(wa.runSimulation());
+            sb.append(wa.runLosingSimulation());
             sb.append("\n");
         }
         return sb.toString();
@@ -841,6 +844,7 @@ public class Main extends Application {
         if(q16.isSelected()) {
             WageBasedSimulation wa = new WageBasedSimulation(cases);
             sb.append(wa.runSimulation());
+            sb.append(wa.runLosingSimulation());
             sb.append("\n");
         }
         return sb.toString();

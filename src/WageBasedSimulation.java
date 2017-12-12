@@ -24,6 +24,7 @@ public class WageBasedSimulation {
     HashMap<Case, Double> casesAndWages = new HashMap<>();
     List<Entry<Case, Double>> organizedCases;
     ArrayList<Case> winningCases = new ArrayList<Case>();
+    ArrayList<Case> losingCases = new ArrayList<Case>();
     
     HashMap<String, Integer> cities = new HashMap<>();
     List<Entry<String, Integer>> organizedCities;
@@ -51,7 +52,7 @@ public class WageBasedSimulation {
      * This method sorts all H-1B cases for a given year by the wage offered, 
      * and then adds the top 85,000 cases to winningCases.
      */
-    public void caseWageAnalyzer() {
+    public void caseWageAnalyzer() {        
         for (int i = 0; i < cases.size(); i++) {            
             if (cases.get(i).employerCity.length() > 2) {
                 double wage = cases.get(i).wageRate;
@@ -67,6 +68,10 @@ public class WageBasedSimulation {
         for (int i = 0; i < 85000; i++) {
             winningCases.add(organizedCases.get(i).getKey());
         }
+        for (int i = 85000; i < organizedCases.size(); i++) {
+            losingCases.add(organizedCases.get(i).getKey());
+        }
+        
     }
     
     /**
@@ -84,6 +89,20 @@ public class WageBasedSimulation {
     }
     
     /**
+     * This method "runs the simulation", and calls various methods 
+     * from other analysis classes for the cases that don't make the cut.
+     * @return all results for the losing cases.
+     * @throws IOException
+     */
+    public String runLosingSimulation() throws IOException {
+        String line = "\n\n--------------------------------------------------------------------------\n\n";
+        return line + "Here are the results of the simulation for the unfortunate cases who did not "
+                + "make the top 85,000 candidates.\n\n" + 
+                getTop25LosingCases() + getLosingNumbers() + getTopTenLosingJobTitles() + 
+                getTopTenLosingCities() + getTopTenLosingStates() + getLosingUniversityReport();
+    }
+    
+    /**
      * This method returns the top 10 cities 
      * for the ArrayList of winningCases.
      * @return the top 10 cities
@@ -91,6 +110,17 @@ public class WageBasedSimulation {
      */
     public String getTopTenCities() throws IOException {
         GeographyAnalysis ga = new GeographyAnalysis(winningCases);
+        return ga.getTopTenCities();
+    }
+    
+    /**
+     * This method returns the top 10 cities 
+     * for the ArrayList of losingCases.
+     * @return the top 10 cities
+     * @throws IOException
+     */
+    public String getTopTenLosingCities() throws IOException {
+        GeographyAnalysis ga = new GeographyAnalysis(losingCases);
         return ga.getTopTenCities();
     }
     
@@ -103,7 +133,17 @@ public class WageBasedSimulation {
     public String getTopTenStates() throws IOException {
         GeographyAnalysis ga = new GeographyAnalysis(winningCases);
         return ga.getTopTenStates();
-
+    }
+    
+    /**
+     * This method returns the top 10 states 
+     * for the ArrayList of losingCases.
+     * @return the top 10 states
+     * @throws IOException
+     */
+    public String getTopTenLosingStates() throws IOException {
+        GeographyAnalysis ga = new GeographyAnalysis(losingCases);
+        return ga.getTopTenStates();
     }
     
     /**
@@ -114,6 +154,17 @@ public class WageBasedSimulation {
      */
     public String getTopTenJobTitles() {
         JobAnalysis ja = new JobAnalysis(winningCases);
+        return ja.getTopTenJobTitles();
+    }
+    
+    /**
+     * This method returns the top 10 job titles 
+     * for the ArrayList of losingCases.
+     * @return the top 10 job titles
+     * @throws IOException
+     */
+    public String getTopTenLosingJobTitles() {
+        JobAnalysis ja = new JobAnalysis(losingCases);
         return ja.getTopTenJobTitles();
     }
     
@@ -135,6 +186,31 @@ public class WageBasedSimulation {
         winningCases.get(i).employerName + "\n" + winningCases.get(i).employerCity + 
         ", " + winningCases.get(i).employerState + "\n");
             sa.append("Wage: " + (int) winningCases.get(i).wageRate  + "\n");
+            sa.append("\n");
+        }
+        
+        sa.append("\n");
+        return sa.toString();
+    }
+    
+    /**
+     * This method returns the top 25 cases 
+     * for the ArrayList of winningCases based
+     * on wage offered.
+     * @return the top 25 cases
+     * @throws IOException
+     */
+    public String getTop25LosingCases() {
+        StringBuilder sa = new StringBuilder();
+        sa.append("The top 25 job cases that missed out on their H-1Bs based on wage offered are...");
+        sa.append("\n");
+        sa.append("\n");
+        
+        for (int i = 0; i < 25; i++) {
+            sa.append((i + 1) + ". " + losingCases.get(i).jobTitle + ", " + 
+                    losingCases.get(i).employerName + "\n" + losingCases.get(i).employerCity + 
+        ", " + losingCases.get(i).employerState + "\n");
+            sa.append("Wage: " + (int) losingCases.get(i).wageRate  + "\n");
             sa.append("\n");
         }
         
@@ -181,13 +257,55 @@ public class WageBasedSimulation {
         return line + averageAnswer + lowestAnswer + highestAnswer;
     }
     
+    public String getLosingNumbers() {
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.CEILING);
+        
+        double averageWage = 0;
+        int count = 0;
+        double highestWage = 0;
+        double lowestWage = 1000000;
+        
+        for (int i = 0; i < losingCases.size(); i++) {
+            
+            averageWage = losingCases.get(i).wageRate + averageWage;
+            count++;
+            
+            if (highestWage < losingCases.get(i).wageRate) {
+                highestWage = losingCases.get(i).wageRate;
+            }
+
+            if (lowestWage > losingCases.get(i).wageRate && losingCases.get(i).wageRate != 0) {
+                lowestWage = losingCases.get(i).wageRate;
+            }
+        }
+        
+        averageWage = averageWage / count;
+        
+        String averageAnswer = "The average wage of the simulated H-1B losers is $" + df.format(averageWage) + ".\n";
+        String lowestAnswer = "The lowest wage of the simulated H-1B losers is $" + df.format(lowestWage) + ".\n";
+        String highestAnswer = "The highest wage of the simulated H-1B losers is $" + df.format(highestWage) + ".\n\n";
+        String line = "\n\n--------------------------------------------------------------------------\n\n";
+        return line + averageAnswer + lowestAnswer + highestAnswer;
+    }
+    
     /**
      * This method calls upon two methods relevant to university jobs, 
-     * from the UniversityAnalysis class.
+     * from the UniversityAnalysis class for the winningCases.
      * @return results from the university analysis class.
      */
     public String getUniversityReport() {
         UniversityAnalysis ua = new UniversityAnalysis(winningCases);
+        return ua.getTopTenUniversityApplicants() + ua.getTopTenUniversityJobs();
+    }
+    
+    /**
+     * This method calls upon two methods relevant to university jobs, 
+     * from the UniversityAnalysis class for the losingCases.
+     * @return results from the university analysis class.
+     */
+    public String getLosingUniversityReport() {
+        UniversityAnalysis ua = new UniversityAnalysis(losingCases);
         return ua.getTopTenUniversityApplicants() + ua.getTopTenUniversityJobs();
     }
     

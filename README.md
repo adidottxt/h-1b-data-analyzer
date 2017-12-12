@@ -10,7 +10,8 @@ You, the user, pick a year, and then pick various questions you’d like to answ
 
 First, let’s get you set up.
 <br>
-
+<br>
+<br>
 
 Setup:
 -------------
@@ -27,6 +28,8 @@ Add all the .jar files found in the lib folder to the libraries in your Java Bui
 
 #### Step 4
 You’re all set! Run the application via the H1BDataAnalyzer.java file.
+<br>
+<br>
 <br>
 
 
@@ -54,6 +57,8 @@ The answers to your selected questions should show up on a window that looks lik
 Scroll down within the text area to view all your answers.
 
 At this point, you are free to either go back and choose different questions (or go back further to choose a different year), or to exit the program using the “Exit” button. 
+<br>
+<br>
 <br>
 
 Questions: Explained!

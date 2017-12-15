@@ -221,7 +221,7 @@ public class JobAnalysis {
             sa.append("The average wage for the given job for H-1B candidates is $" + 
                     finalAverageWage + ".\n");
             sa.append("The average \"prevailing wage\" based on H-1B applications is $" + 
-                    finalAveragePrevWage + ".");
+                    finalAveragePrevWage + ".\n");
             sa.append("The average wage difference for the given job (" + job + ") , "
                     + "therefore, is $" + finalWageDifferenceAverage + ".\n");
         } else {

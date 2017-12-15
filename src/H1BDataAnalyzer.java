@@ -268,15 +268,21 @@ public class H1BDataAnalyzer extends Application {
         CheckBox question15Copy = new CheckBox("Top University H-1B Jobs");
         question15Copy.setTooltip(new Tooltip("The top 10 jobs for H-1B applications submitted by universities."));
 
-        CheckBox question16 = new CheckBox("Run H-1B Allocation Simulation");
-        question16.setTooltip(new Tooltip("This simulation gives you the answer to various questions \n"
+        CheckBox question16 = new CheckBox("Top Companies (by # of applications)");
+        question16.setTooltip(new Tooltip("The top 10 companies for your year's cohort of H-1B candidates."));
+        
+        CheckBox question16Copy = new CheckBox("Top Companies (by # of applications)");
+        question16Copy.setTooltip(new Tooltip("The top 10 companies for your year's cohort of H-1B candidates."));
+        
+        CheckBox question17 = new CheckBox("Run H-1B Allocation Simulation");
+        question17.setTooltip(new Tooltip("This simulation gives you the answer to various questions \n"
                 + "pertinent to what would happen if the yearly quota of \n85,000 visas was not "
                 + "allocated via lottery, but instead to the 85,000 \nhighest bidders. This analyzes "
                 + "information about the 85,000 \nthat get their visas, and information about the "
                 + "remaining who do not.")); 
         
-        CheckBox question16Copy = new CheckBox("Run H-1B Allocation Simulation");
-        question16Copy.setTooltip(new Tooltip("This simulation gives you the answer to various questions \n"
+        CheckBox question17Copy = new CheckBox("Run H-1B Allocation Simulation");
+        question17Copy.setTooltip(new Tooltip("This simulation gives you the answer to various questions \n"
                 + "pertinent to what would happen if the yearly quota of \n85,000 visas was not "
                 + "allocated via lottery, but instead to the 85,000 \nhighest bidders. This analyzes "
                 + "information about the 85,000 \nthat get their visas, and information about the "
@@ -320,6 +326,7 @@ public class H1BDataAnalyzer extends Application {
         question14Copy.setSelected(false);
         question15Copy.setSelected(false);
         question16Copy.setSelected(false);
+        question17Copy.setSelected(false);
         question1.setSelected(false);
         question2.setSelected(false);
         question3.setSelected(false);
@@ -336,6 +343,7 @@ public class H1BDataAnalyzer extends Application {
         question14.setSelected(false);
         question15.setSelected(false);
         question16.setSelected(false);
+        question17.setSelected(false);
         button4.setOnAction(e -> window.setScene(yearScene));
         
         /**
@@ -356,6 +364,7 @@ public class H1BDataAnalyzer extends Application {
         question14Copy.setSelected(false);
         question15Copy.setSelected(false);
         question16Copy.setSelected(false);
+        question17Copy.setSelected(false);
         question1.setSelected(false);
         question2.setSelected(false);
         question3.setSelected(false);
@@ -372,6 +381,7 @@ public class H1BDataAnalyzer extends Application {
         question14.setSelected(false);
         question15.setSelected(false);
         question16.setSelected(false);
+        question17.setSelected(false);
         button4Copy.setOnAction(e -> window.setScene(yearScene));
         
         /**
@@ -388,7 +398,7 @@ public class H1BDataAnalyzer extends Application {
                         !question7Copy.isSelected() && !question8Copy.isSelected() && 
                         !question9Copy.isSelected() && !question10Copy.isSelected() && 
                         !question14Copy.isSelected() && !question15Copy.isSelected() &&
-                        !question16Copy.isSelected()) {
+                        !question16Copy.isSelected() && !question17Copy.isSelected()) {
                         NoQuestionsSelectedAlertBox.display();
                         window.setScene(someQuestionsScene);
                         
@@ -396,7 +406,7 @@ public class H1BDataAnalyzer extends Application {
                     String answer = handleSomeOptions(question1Copy, question2Copy, question3Copy, 
                             question4Copy, question5Copy, question6Copy, question7Copy, 
                             question8Copy, question9Copy, question10Copy, question14Copy, 
-                            question15Copy, question16Copy);
+                            question15Copy, question16Copy, question17Copy);
                     textOutput.clear();
 
                     for (char c : answer.toCharArray()) {
@@ -423,7 +433,7 @@ public class H1BDataAnalyzer extends Application {
                         !question7.isSelected() && !question8.isSelected() && !question9.isSelected() && 
                         !question10.isSelected() && !question11.isSelected() && !question12.isSelected() && 
                         !question13.isSelected() && !question14.isSelected() && !question15.isSelected() &&
-                        !question16.isSelected()) {
+                        !question16.isSelected() && !question17.isSelected()) {
                        
                     NoQuestionsSelectedAlertBox.display();
                     window.setScene(allQuestionsScene);
@@ -431,7 +441,8 @@ public class H1BDataAnalyzer extends Application {
                 } else {
                     String answer = handleOptions(question1, question2, question3, question4, 
                             question5, question6, question7, question8, question9, question10, 
-                            question11, question12, question13, question14, question15, question16);
+                            question11, question12, question13, question14, question15, question16, 
+                            question17);
                     
                     textOutput1.clear();
                     for (char c : answer.toCharArray()) {
@@ -464,6 +475,7 @@ public class H1BDataAnalyzer extends Application {
             question14Copy.setSelected(false);
             question15Copy.setSelected(false);
             question16Copy.setSelected(false);
+            question17Copy.setSelected(false);
             window.setScene(someQuestionsScene);
         });
         
@@ -490,6 +502,7 @@ public class H1BDataAnalyzer extends Application {
             question14.setSelected(false);
             question15.setSelected(false);
             question16.setSelected(false);
+            question17.setSelected(false);
             window.setScene(allQuestionsScene);  
         });
         
@@ -578,13 +591,14 @@ public class H1BDataAnalyzer extends Application {
         GridPane.setConstraints(question14Copy, 0, 9);
         GridPane.setConstraints(question15Copy, 1, 9);
         GridPane.setConstraints(question16Copy, 0, 10);
+        GridPane.setConstraints(question17Copy, 1, 10);
         GridPane.setConstraints(button5, 25, 26);
         GridPane.setConstraints(button4Copy, 0, 26);
         
         grid3.getChildren().addAll(question1Copy, question2Copy, question3Copy,
                  question4Copy, question5Copy, question6Copy, question7Copy, question8Copy,
-                  question9Copy, question10Copy, question14Copy, question15Copy, 
-                  question16Copy, button5, button4Copy);
+                  question9Copy, question10Copy, question14Copy, question15Copy, question16Copy, 
+                  question17Copy, button5, button4Copy);
         someQuestionsScene = new Scene(grid3, 1100, 850);
         
         /**
@@ -614,12 +628,13 @@ public class H1BDataAnalyzer extends Application {
         GridPane.setConstraints(question15, 1, 13);
         GridPane.setConstraints(question12, 0, 14);
         GridPane.setConstraints(question16, 1, 14);
+        GridPane.setConstraints(question17, 0, 15);
         GridPane.setConstraints(button6, 25, 31);
         GridPane.setConstraints(button4, 0, 31);
         
         grid4.getChildren().addAll(question1, question2, question3, question4,
                 question5, question6, question7, question8, question9, question10,
-                question11, question12, question13, question14, question15, question16, 
+                question11, question12, question13, question14, question15, question16, question17, 
                 button6, button4);
         allQuestionsScene = new Scene(grid4, 1100, 850);
         
@@ -695,7 +710,7 @@ public class H1BDataAnalyzer extends Application {
             CheckBox question3, CheckBox question4, CheckBox question5, CheckBox question6, 
             CheckBox question7, CheckBox question8, CheckBox question9, CheckBox question10, 
             CheckBox question11, CheckBox question12, CheckBox question13, CheckBox question14, 
-            CheckBox question15, CheckBox question16) throws IOException {
+            CheckBox question15, CheckBox question16, CheckBox question17) throws IOException {
         
         StringBuilder sb = new StringBuilder();
 
@@ -765,7 +780,14 @@ public class H1BDataAnalyzer extends Application {
                 sb.append("\n");   
             }
         }
-        if (question16.isSelected()) {
+        
+        if(question16.isSelected()) {
+            CompanyAnalysis cAn = new CompanyAnalysis(cases);
+            sb.append(cAn.getTopTwentyFiveCompanies());
+            sb.append("\n");
+        }
+        
+        if (question17.isSelected()) {
             WageBasedSimulation wa = new WageBasedSimulation(cases);
             sb.append(wa.runSimulation());
             sb.append(wa.runLosingSimulation());
@@ -784,7 +806,7 @@ public class H1BDataAnalyzer extends Application {
     private String handleSomeOptions(CheckBox q1, CheckBox q2,
             CheckBox q3, CheckBox q4, CheckBox q5, CheckBox q6, 
             CheckBox q7, CheckBox q8, CheckBox q9, CheckBox q10, 
-            CheckBox q14, CheckBox q15, CheckBox q16) throws IOException {  
+            CheckBox q14, CheckBox q15, CheckBox q16, CheckBox q17) throws IOException {  
                 
         StringBuilder sb = new StringBuilder();
 
@@ -842,6 +864,12 @@ public class H1BDataAnalyzer extends Application {
         }
         
         if(q16.isSelected()) {
+            CompanyAnalysis cAn = new CompanyAnalysis(cases);
+            sb.append(cAn.getTopTwentyFiveCompanies());
+            sb.append("\n");
+        }
+        
+        if(q17.isSelected()) {
             WageBasedSimulation wa = new WageBasedSimulation(cases);
             sb.append(wa.runSimulation());
             sb.append(wa.runLosingSimulation());

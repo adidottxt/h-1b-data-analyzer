@@ -68,6 +68,7 @@ public class WageBasedSimulation {
         for (int i = 0; i < 85000; i++) {
             winningCases.add(organizedCases.get(i).getKey());
         }
+        
         for (int i = 85000; i < organizedCases.size(); i++) {
             losingCases.add(organizedCases.get(i).getKey());
         }
@@ -84,8 +85,8 @@ public class WageBasedSimulation {
         String line = "\n\n--------------------------------------------------------------------------\n\n";
         return line + "Here are the results of the simulation where the top 85,000 candidates \n"
                 + "by wage are awarded H-1B visas for the given year.\n\n" + getTop25Cases() + 
-                getNumbers() + getTopTenJobTitles() + getTopTenCities() + getTopTenStates() + 
-                getUniversityReport();
+                getTopTwentyFiveWinningCompanies() + getNumbers() + getTopTenJobTitles() + 
+                getTopTenCities() + getTopTenStates() + getUniversityReport();
     }
     
     /**
@@ -98,8 +99,9 @@ public class WageBasedSimulation {
         String line = "\n\n--------------------------------------------------------------------------\n\n";
         return line + "Here are the results of the simulation for the unfortunate cases who did not "
                 + "make the top 85,000 candidates.\n\n" + 
-                getTop25LosingCases() + getLosingNumbers() + getTopTenLosingJobTitles() + 
-                getTopTenLosingCities() + getTopTenLosingStates() + getLosingUniversityReport();
+                getTop25LosingCases() + getTopTwentyFiveLosingCompanies() + getLosingNumbers() + 
+                getTopTenLosingJobTitles() + getTopTenLosingCities() + getTopTenLosingStates() + 
+                getLosingUniversityReport();
     }
     
     /**
@@ -155,6 +157,16 @@ public class WageBasedSimulation {
     public String getTopTenJobTitles() {
         JobAnalysis ja = new JobAnalysis(winningCases);
         return ja.getTopTenJobTitles();
+    }
+    
+    public String getTopTwentyFiveWinningCompanies() {
+        CompanyAnalysis cAn = new CompanyAnalysis(winningCases);
+        return cAn.getTopTwentyFiveCompanies();
+    }
+    
+    public String getTopTwentyFiveLosingCompanies() {
+        CompanyAnalysis cAn = new CompanyAnalysis(losingCases);
+        return cAn.getTopTwentyFiveCompanies();
     }
     
     /**
@@ -332,5 +344,19 @@ public class WageBasedSimulation {
             return count2.compareTo(count1);
         }
     };
+
+    /**
+     * @return the winningCases
+     */
+    public ArrayList<Case> getWinningCases() {
+        return winningCases;
+    }
+
+    /**
+     * @return the losingCases
+     */
+    public ArrayList<Case> getLosingCases() {
+        return losingCases;
+    }
     
 }

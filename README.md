@@ -67,6 +67,9 @@ Potential updates:
 Potential updates include...
 1) adding company-based analysis, and tying this into the simulation to see which companies stand to gain (or lose) the most based on a change to how visas are handed out.
 2) adding more simulations to mirror the numerous bills in Congress that propose changes to how H-1B visas are handed out (for example, what would happen if a minimum wage of $130,000 was required?)
+<br>
+<br>
+<br>
 
 Questions: Explained!
 -------------------

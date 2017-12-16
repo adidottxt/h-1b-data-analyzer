@@ -70,7 +70,7 @@ Potential updates include...
 <br>
 <br>
 
-Questions: Explained!
+Question Explanations
 -------------------
 Having a hard time understanding what each question means? Try hovering over the question to get a brief explanation of what each question deals with.
 

@@ -74,7 +74,7 @@ Question Explanations
 -------------------
 Having a hard time understanding what each question means? Try hovering over the question to get a brief explanation of what each question deals with.
 
-Still having trouble? Worry not; here’s a (slightly more in-depth) explanation to each question.
+Still having trouble? Here’s a (slightly more in-depth) explanation to each question.
 
 #### Top Cities (by # of applications):
 

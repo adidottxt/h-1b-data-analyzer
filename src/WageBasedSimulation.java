@@ -85,7 +85,7 @@ public class WageBasedSimulation {
         String line = "\n\n--------------------------------------------------------------------------\n\n";
         return line + "Here are the results of the simulation where the top 85,000 candidates \n"
                 + "by wage are awarded H-1B visas for the given year.\n\n" + getTop25Cases() + 
-                getTopTwentyFiveWinningCompanies() + getNumbers() + getTopTenJobTitles() + 
+                getTopTenWinningCompanies() + getNumbers() + getTopTenJobTitles() + 
                 getTopTenCities() + getTopTenStates() + getUniversityReport();
     }
     
@@ -99,7 +99,7 @@ public class WageBasedSimulation {
         String line = "\n\n--------------------------------------------------------------------------\n\n";
         return line + "Here are the results of the simulation for the unfortunate cases who did not "
                 + "make the top 85,000 candidates.\n\n" + 
-                getTop25LosingCases() + getTopTwentyFiveLosingCompanies() + getLosingNumbers() + 
+                getTop25LosingCases() + getTopTenLosingCompanies() + getLosingNumbers() + 
                 getTopTenLosingJobTitles() + getTopTenLosingCities() + getTopTenLosingStates() + 
                 getLosingUniversityReport();
     }
@@ -159,14 +159,14 @@ public class WageBasedSimulation {
         return ja.getTopTenJobTitles();
     }
     
-    public String getTopTwentyFiveWinningCompanies() {
+    public String getTopTenWinningCompanies() {
         CompanyAnalysis cAn = new CompanyAnalysis(winningCases);
-        return cAn.getTopTwentyFiveCompanies();
+        return cAn.getTopTenCompanies();
     }
     
-    public String getTopTwentyFiveLosingCompanies() {
+    public String getTopTenLosingCompanies() {
         CompanyAnalysis cAn = new CompanyAnalysis(losingCases);
-        return cAn.getTopTwentyFiveCompanies();
+        return cAn.getTopTenCompanies();
     }
     
     /**

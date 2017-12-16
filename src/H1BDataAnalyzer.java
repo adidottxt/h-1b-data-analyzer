@@ -269,10 +269,12 @@ public class H1BDataAnalyzer extends Application {
         question15Copy.setTooltip(new Tooltip("The top 10 jobs for H-1B applications submitted by universities."));
 
         CheckBox question16 = new CheckBox("Top Companies (by # of applications)");
-        question16.setTooltip(new Tooltip("The top 10 companies for your year's cohort of H-1B candidates."));
+        question16.setTooltip(new Tooltip("The top 10 companies that submitted applications for your "
+                + "year's cohort of H-1B candidates."));
         
         CheckBox question16Copy = new CheckBox("Top Companies (by # of applications)");
-        question16Copy.setTooltip(new Tooltip("The top 10 companies for your year's cohort of H-1B candidates."));
+        question16Copy.setTooltip(new Tooltip("The top 10 companies that submitted applications for "
+                + "your year's cohort of H-1B candidates."));
         
         CheckBox question17 = new CheckBox("Run H-1B Allocation Simulation");
         question17.setTooltip(new Tooltip("This simulation gives you the answer to various questions \n"
@@ -627,8 +629,8 @@ public class H1BDataAnalyzer extends Application {
         GridPane.setConstraints(question13, 0, 13);
         GridPane.setConstraints(question15, 1, 13);
         GridPane.setConstraints(question12, 0, 14);
-        GridPane.setConstraints(question16, 1, 14);
-        GridPane.setConstraints(question17, 0, 15);
+        GridPane.setConstraints(question16, 0, 15);
+        GridPane.setConstraints(question17, 1, 14);
         GridPane.setConstraints(button6, 25, 31);
         GridPane.setConstraints(button4, 0, 31);
         
@@ -783,7 +785,7 @@ public class H1BDataAnalyzer extends Application {
         
         if(question16.isSelected()) {
             CompanyAnalysis cAn = new CompanyAnalysis(cases);
-            sb.append(cAn.getTopTwentyFiveCompanies());
+            sb.append(cAn.getTopTenCompanies());
             sb.append("\n");
         }
         
@@ -865,7 +867,7 @@ public class H1BDataAnalyzer extends Application {
         
         if(q16.isSelected()) {
             CompanyAnalysis cAn = new CompanyAnalysis(cases);
-            sb.append(cAn.getTopTwentyFiveCompanies());
+            sb.append(cAn.getTopTenCompanies());
             sb.append("\n");
         }
         

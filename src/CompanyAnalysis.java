@@ -48,7 +48,7 @@ public class CompanyAnalysis {
     };
     
     
-    public String getTopTwentyFiveCompanies() {
+    public String getTopTenCompanies() {
 
         StringBuilder sa = new StringBuilder();
         
@@ -60,7 +60,7 @@ public class CompanyAnalysis {
         
         sa.append("The top 10 companies and their respective number of applications are...\n");
         sa.append("\n");
-        for (int i = 0; i < 25; i++) { 
+        for (int i = 0; i < 10; i++) { 
             sa.append((i + 1) + ". " + organizedCompanies.get(i).getKey() + "\n");
             sa.append("Number of Applications: " + organizedCompanies.get(i).getValue() + "\n");
             sa.append("\n");

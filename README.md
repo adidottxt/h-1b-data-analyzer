@@ -65,8 +65,7 @@ Potential updates:
 -------------------
 
 Potential updates include...
-1) adding company-based analysis, and tying this into the simulation to see which companies stand to gain (or lose) the most based on a change to how visas are handed out.
-2) adding more simulations to mirror the numerous bills in Congress that propose changes to how H-1B visas are handed out (for example, what would happen if a minimum wage of $130,000 was required?)
+1) adding more simulations to mirror the numerous bills in Congress that propose changes to how H-1B visas are handed out (for example, what would happen if a minimum wage of $130,000 was required?)
 <br>
 <br>
 <br>
@@ -154,6 +153,11 @@ This question parses through the selected year’s data and returns a list of (b
 #### Top Attorney States (by # of applications):
 
 This question parses through the selected year’s data and returns a list of (based on the number of applications) the top 10 states that attorneys are based in for H-1B candidates. The list contains each state, and their respective count of applications that were submitted by attorneys in said state for the selected year’s data.
+<br>
+
+#### Top Companies (by # of applications):
+
+This question parses through the selected year’s data and returns a list of the top 10 companies (based on the number of applications submitted by each company) for your selected year's cohort of H-1B candidates. The list contains each company, and their respective count of applications for the selected year’s data.
 <br>
 
 #### Run H-1B Allocation Simulation:

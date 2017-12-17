@@ -162,7 +162,7 @@ This question parses through the selected year’s data and returns a list of th
 
 #### Run H-1B Allocation Simulation:
 
-This question runs a simulation and then answers multiple questions pertinent to what would happen if the yearly quota of 85,000 visas was not allocated via lottery (as it is currently, but instead to the 85,000 highest bidders based on the wage offered to each candidate. This analyzes information about the 85,000 that get their visas, and information about the remaining who do not –– for instance, where are the 85,000 winning cases based out of, and where are the the rest of the losing cases based out of? What is the average, highest and lowest wage offered amongst the winning cases? Which cases make up the top 25 cases that make it (given they are extremely likely to be high-profile seven-figure wage jobs.) Answers to all of these questions (and a few more) are returned when you run this simulation.
+This question runs a simulation and then answers multiple questions pertinent to what would happen if the yearly quota of 85,000 visas was not allocated via lottery (as it is currently), but instead to the 85,000 highest bidders based on the wage offered to each candidate. This analyzes information about the 85,000 that get their visas, and information about the remaining who do not –– for instance, where are the 85,000 winning cases based out of, and where are the the rest of the losing cases based out of? What is the average, highest and lowest wage offered amongst the winning cases? Which cases make up the top 25 cases that make it (given they are extremely likely to be high-profile seven-figure wage jobs.) Answers to all of these questions (and a few more) are returned when you run this simulation.
 <br>
 
 

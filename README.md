@@ -1,9 +1,6 @@
 Introduction:
 ===================
 
-
-Hi there! Thanks for using H-1B Data Analyzer.
-
 This application reads in publicly available H-1B application data (converted into .csv files) from 2008-2017, and analyzes said data to reveal potential insight into the companies, attorneys, universities, cities, states, and employees/jobs (to name a few stakeholders) that are involved in the lottery process that takes place every April. 
 
 You, the user, pick a year, and then pick various questions you’d like to answer about your selected year's data set. You are also given the option to run a simulation of what the visa process would like if all 85,000 visas were handed to the highest bidders (on the basis of wage) as opposed to the luck of the lottery –– and how that affects which cities, states, and companies are more (or less) likely to receive H-1B visas.

@@ -1,5 +1,8 @@
-Introduction:
+📊 H-1B Data Analyzer
 ===================
+
+Introduction:
+-------------
 
 This application reads in publicly available H-1B application data (converted into .csv files) from 2008-2017, and analyzes said data to reveal potential insight into the companies, attorneys, universities, cities, states, and employees/jobs (to name a few stakeholders) that are involved in the lottery process that takes place every April. 
 
